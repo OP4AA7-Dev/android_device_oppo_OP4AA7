@@ -24,14 +24,6 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
-function blob_fixup() {
-    case "${1}" in
-        system_ext/lib64/lib-imsvideocodec.so)
-            ${PATCHELF} --add-needed "lib-imsvtshim.so" "${2}"
-            ;;
-    esac
-}
-
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=true
 
@@ -60,6 +52,18 @@ done
 if [ -z "${SRC}" ]; then
     SRC="adb"
 fi
+
+function blob_fixup() {
+    case "${1}" in
+        system_ext/lib64/lib-imsvideocodec.so)
+            "${PATCHELF}" --add-needed lib-imsvtshim.so "${2}"
+        ;;
+        vendor/lib64/sensors.ssc.so)
+            sed -i "s/qti.sensor.wise_light/android.sensor.light\x00/" "${2}"
+            "${SIGSCAN}" -p "F9 69 CA 84 52 49 3F A0 72" -P "F9 A9 00 80 52 09 00 A0 72" -f "${2}" # mov w9, #0x1fa2653 -> mov w9, #5
+        ;;
+    esac
+}
 
 # Initialize the helper
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
