@@ -56,7 +56,7 @@ fi
 function blob_fixup() {
     case "${1}" in
         system_ext/lib64/lib-imsvideocodec.so)
-            "${PATCHELF}" --add-needed lib-imsvtshim.so "${2}"
+            "${PATCHELF}" --add-needed libgui_shim.so "${2}"
         ;;
         vendor/lib64/sensors.ssc.so)
             sed -i "s/qti.sensor.wise_light/android.sensor.light\x00/" "${2}"
