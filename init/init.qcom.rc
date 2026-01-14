@@ -242,6 +242,11 @@ on boot
     # Create vpp directory
     mkdir /mnt/vendor/persist/vpp 0770 media media
 
+    # Enable qcrild and data services
+    enable vendor.qcrild
+    enable vendor.qcrild2
+    enable vendor.dataqti
+    enable vendor.dataadpl
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
@@ -537,12 +542,6 @@ on property:vendor.media.target_variant=*
 service qcom-c_core-sh  /vendor/bin/init.qcom.class_core.sh
     class core
     user root
-    oneshot
-
-service qcom-c_main-sh /vendor/bin/init.class_main.sh
-    class main
-    user root
-    group root system
     oneshot
 
 on property:vold.decrypt=trigger_restart_framework

@@ -350,7 +350,6 @@ PRODUCT_PACKAGES += \
     fstab.qcom.ramdisk
 
 PRODUCT_PACKAGES += \
-    init.class_main.sh \
     init.crda.sh \
     init.mdm.sh \
     init.qcom.class_core.sh \
