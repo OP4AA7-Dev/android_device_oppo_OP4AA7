@@ -226,7 +226,6 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     android.hardware.nfc@1.2.vendor \
     android.hardware.nfc@1.2-service \
