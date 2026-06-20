@@ -10,6 +10,8 @@ include vendor/oppo/OP4AA7/BoardConfigVendor.mk
 DEVICE_PATH := device/oppo/OP4AA7
 KERNEL_PATH := $(DEVICE_PATH)-kernel
 
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_DUP_SYSPROP := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # APEX
