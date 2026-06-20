@@ -192,7 +192,6 @@ vendor/lib64/libbluetooth_audio_session_qti.so
 
 # Camera
 vendor/lib64/libbase64.so
-vendor/lib64/libcamera2ndk_vendor.so
 vendor/lib64/libcvface_api.so
 vendor/lib64/libcvpcpuRev_skel.so
 vendor/lib64/libhbtpclient.so
@@ -217,24 +216,24 @@ vendor/lib64/libsubsystem_control.so
 vendor/lib64/libtzdrmgenprov.so
 
 # Camera-arcsoft
-vendor/lib64/libarcsoft_beautyshot.so
-vendor/lib64/libarcsoft_distortion_correction.so
-vendor/lib64/libarcsoft_dualcam_bokeh_api.so
-vendor/lib64/libarcsoft_dualcam_refocus_left.so
-vendor/lib64/libarcsoft_dualcam_refocus_preview.so
-vendor/lib64/libarcsoft_dualcam_refocus_right.so
-vendor/lib64/libarcsoft_hdr_couple_api.so
-vendor/lib64/libarcsoft_hdr_denoise_api.so
-vendor/lib64/libarcsoft_hdrplus_hvx_stub.so
-vendor/lib64/libarcsoft_high_dynamic_range.so
-vendor/lib64/libarcsoft_high_dynamic_range_couple.so
-vendor/lib64/libarcsoft_lensstaindetection.so
-vendor/lib64/libarcsoft_low_light_hdr.so
-vendor/lib64/libarcsoft_portraitSN_hvx_stub.so
-vendor/lib64/libarcsoft_portrait_super_night_raw.so
-vendor/lib64/libarcsoft_scbokeh_video.so
-vendor/lib64/libarcsoft_smart_denoise.so
-vendor/lib64/libarcsoft_super_night_raw.so
+odm/lib64/libarcsoft_beautyshot.so:vendor/lib64/libarcsoft_beautyshot.so
+odm/lib64/libarcsoft_distortion_correction.so:vendor/lib64/libarcsoft_distortion_correction.so
+odm/lib64/libarcsoft_dualcam_bokeh_api.so:vendor/lib64/libarcsoft_dualcam_bokeh_api.so
+odm/lib64/libarcsoft_dualcam_refocus_left.so:vendor/lib64/libarcsoft_dualcam_refocus_left.so
+odm/lib64/libarcsoft_dualcam_refocus_preview.so:vendor/lib64/libarcsoft_dualcam_refocus_preview.so
+odm/lib64/libarcsoft_dualcam_refocus_right.so:vendor/lib64/libarcsoft_dualcam_refocus_right.so
+odm/lib64/libarcsoft_hdr_couple_api.so:vendor/lib64/libarcsoft_hdr_couple_api.so
+odm/lib64/libarcsoft_hdr_denoise_api.so:vendor/lib64/libarcsoft_hdr_denoise_api.so
+odm/lib64/libarcsoft_hdrplus_hvx_stub.so:vendor/lib64/libarcsoft_hdrplus_hvx_stub.so
+odm/lib64/libarcsoft_high_dynamic_range.so:vendor/lib64/libarcsoft_high_dynamic_range.so
+odm/lib64/libarcsoft_high_dynamic_range_couple.so:vendor/lib64/libarcsoft_high_dynamic_range_couple.so
+odm/lib64/libarcsoft_lensstaindetection.so:vendor/lib64/libarcsoft_lensstaindetection.so
+odm/lib64/libarcsoft_low_light_hdr.so:vendor/lib64/libarcsoft_low_light_hdr.so
+odm/lib64/libarcsoft_portraitSN_hvx_stub.so:vendor/lib64/libarcsoft_portraitSN_hvx_stub.so
+odm/lib64/libarcsoft_portrait_super_night_raw.so:vendor/lib64/libarcsoft_portrait_super_night_raw.so
+odm/lib64/libarcsoft_scbokeh_video.so:vendor/lib64/libarcsoft_scbokeh_video.so
+odm/lib64/libarcsoft_smart_denoise.so:vendor/lib64/libarcsoft_smart_denoise.so
+odm/lib64/libarcsoft_super_night_raw.so:vendor/lib64/libarcsoft_super_night_raw.so
 
 # Camera (camerax)
 vendor/lib64/libcamxfdalgov7.so
@@ -541,8 +540,8 @@ odm/lib64/librpmbengclient.so
 odm/lib64/libsnpe_dsp_domains_v2.so
 odm/lib64/libsnpe_loader.so
 odm/lib64/libsnpeml.so
-vendor/lib64/libstblur_api.so
-vendor/lib64/libstblur_capture_api.so
+odm/lib64/libstblur_api.so:vendor/lib64/libstblur_api.so
+odm/lib64/libstblur_capture_api.so:vendor/lib64/libstblur_capture_api.so
 odm/lib64/libstdc++.so
 odm/lib64/libstface_fd_api.so
 odm/lib64/libswresample.so
@@ -952,6 +951,51 @@ vendor/firmware/ipa_fws.b03
 vendor/firmware/ipa_fws.b04
 vendor/firmware/ipa_fws.elf
 vendor/firmware/ipa_fws.mdt
+
+# Kernel Module
+vendor/lib/modules/audio_adsp_loader.ko
+vendor/lib/modules/audio_ak4376.ko
+vendor/lib/modules/audio_apr.ko
+vendor/lib/modules/audio_bolero_cdc.ko
+vendor/lib/modules/audio_dspg_dbmdx.ko
+vendor/lib/modules/audio_hdmi.ko
+vendor/lib/modules/audio_machine_talos.ko
+vendor/lib/modules/audio_mbhc.ko
+vendor/lib/modules/audio_native.ko
+vendor/lib/modules/audio_pinctrl_lpi.ko
+vendor/lib/modules/audio_pinctrl_wcd.ko
+vendor/lib/modules/audio_platform.ko
+vendor/lib/modules/audio_q6.ko
+vendor/lib/modules/audio_q6_notifier.ko
+vendor/lib/modules/audio_q6_pdr.ko
+vendor/lib/modules/audio_rx_macro.ko
+vendor/lib/modules/audio_snd_event.ko
+vendor/lib/modules/audio_stub.ko
+vendor/lib/modules/audio_swr.ko
+vendor/lib/modules/audio_swr_ctrl.ko
+vendor/lib/modules/audio_tfa98xx-v6.ko
+vendor/lib/modules/audio_tx_macro.ko
+vendor/lib/modules/audio_usf.ko
+vendor/lib/modules/audio_va_macro.ko
+vendor/lib/modules/audio_wcd934x.ko
+vendor/lib/modules/audio_wcd937x.ko
+vendor/lib/modules/audio_wcd937x_slave.ko
+vendor/lib/modules/audio_wcd9xxx.ko
+vendor/lib/modules/audio_wcd_core.ko
+vendor/lib/modules/audio_wcd_spi.ko
+vendor/lib/modules/audio_wglink.ko
+vendor/lib/modules/audio_wsa881x.ko
+vendor/lib/modules/audio_wsa_macro.ko
+vendor/lib/modules/modules.alias
+vendor/lib/modules/modules.dep
+vendor/lib/modules/modules.load
+vendor/lib/modules/modules.softdep
+vendor/lib/modules/mpq-adapter.ko
+vendor/lib/modules/mpq-dmx-hw-plugin.ko
+vendor/lib/modules/msm_11ad_proxy.ko
+vendor/lib/modules/qca_cld3_wlan.ko
+vendor/lib/modules/rdbg.ko
+vendor/lib/modules/wil6210.ko
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
