@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.lineageos.telephonyresoverlay.OP4AA7">
+    <application android:hasCode="false" />
+    <overlay android:isStatic="true"
+             android:priority="1"
+             android:targetPackage="com.android.phone"
+             android:targetName="OP4AA7TelephonyResOverlay" />
+</manifest>

@@ -1,0 +1,58 @@
+# Audio (Dolby)
+ro.oplus.audio.voip.enhancement=1
+vendor.display.primary_mixer_stages=8
+ro.vendor.dolby.dax.version=DAX3_3.5.1
+ro.vendor.dolby.model=PAFM00
+ro.vendor.dolby.device=OP46C3
+ro.vendor.dolby.manufacturer=OPPO
+ro.vendor.dolby.brand=OPPO
+ro.oplus.audio.dolby.offload=0
+ro.oppo.appautoresolution.default=1
+persist.oplus.a2dp_small_volume=true
+ro.oplus.audio.effect.type=dolby
+ro.oplus.audio.dolby.type=v351
+
+# Bluetooth
+persist.bluetooth.disableabsvol=false
+persist.bluetooth.absvolume_support=true
+persist.vendor.service.bt.iot.enablelogging=true
+persist.vendor.bluetooth.a2dp.hal.implementation=true
+persist.vendor.bt.a2dp.hal.implementation=true
+persist.bluetooth.disableinbandringing=false
+persist.bluetooth.specificatcmdsenable=true
+persist.vendor.bluetooth.modem_nv_support=true
+persist.vendor.service.bt.iotinfo.report.enable=true
+persist.vendor.btstack.enable.twsplus=true
+persist.vendor.btstack.enable.twsplussho=true
+persist.bluetooth.bqr.event_mask=0x8000000E
+persist.bluetooth.bqr.min_interval_ms=60000
+persist.bluetooth.bqr.choppy_threshold=9,6
+persist.bluetooth.a2dp.lhdc=false
+
+# IMS
+persist.vendor.ims.disableADBLogs=0
+persist.vendor.ims.disableDebugLogs=0
+persist.vendor.ims.disableQXDMLogs=0
+persist.vendor.ims.disableIMSLogs=0
+persist.vendor.ims.rtp.enableqxdm=15
+persist.vendor.ims.vt.enableadb=3
+persist.vendor.ims.loglevel=255
+persist.ims.disableADBLogs=0
+persist.ims.disableDebugLogs=0
+persist.ims.disableQXDMLogs=0
+persist.ims.disableIMSLogs=0
+
+# LMKD
+ro.lmk.low=1001
+ro.lmk.medium=800
+ro.lmk.critical=0
+ro.lmk.critical_upgrade=false
+ro.lmk.upgrade_pressure=100
+ro.lmk.downgrade_pressure=100
+ro.lmk.kill_heaviest_task=true
+ro.lmk.kill_timeout_ms=100
+ro.lmk.use_minfree_levels=true
+
+# NFC
+persist.nfc.smartcard.recorder.enable=true
+persist.sys.nfc.disPowerSave=1
