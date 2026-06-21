@@ -115,6 +115,10 @@ ro.camera.attr.detect.enable=1
 ro.camera.temperature.limit=470
 camera.disable_zsl_mode=1
 
+# Chipset
+ro.soc.manufacturer=Qualcomm
+ro.soc.model=SM7150
+
 # Crypto
 ro.crypto.allow_encrypt_override=true
 ro.crypto.volume.filenames_mode=aes-256-cts
@@ -144,10 +148,6 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Fwk detect
 ro.vendor.qti.va_aosp.support=1
-
-# Chipset
-ro.soc.manufacturer=Qualcomm
-ro.soc.model=SM7150
 
 # Graphics
 debug.egl.hw=0
@@ -203,7 +203,7 @@ vendor.power.pasr.enabled=false
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
-    
+
 # RCS
 persist.rcs.supported=0
 

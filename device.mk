@@ -159,6 +159,10 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
 
+# Qemu HW Keys
+PRODUCT_PROPERTY_OVERRIDES += \
+    qemu.hw.mainkeys=0
+
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common \
