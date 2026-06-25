@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.lineageos.proximityservice"
+    android:versionCode="1"
+    android:versionName="1.0"
+    android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:label="OPlusProximityHelper"
+        android:persistent="true">
+
+        <receiver android:name="org.lineageos.proximityservice.BootCompletedReceiver"
+                  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="org.lineageos.proximityservice.OPlusProximityHelperService"
+                 android:permission="OPlusProximityHelperService">
+        </service>
+
+    </application>
+</manifest>
