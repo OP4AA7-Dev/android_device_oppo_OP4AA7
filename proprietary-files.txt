@@ -1417,8 +1417,6 @@ vendor/etc/sensors/config/talos_power_0.json
 vendor/etc/sensors/config/talos_tmd2725.json
 vendor/etc/sensors/config/tcs3701.json
 vendor/etc/sensors/sns_reg_config
-vendor/lib/oplus.sensors.ssc.so
-vendor/lib/sensors.ssc.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorslog.so
 vendor/lib64/libsns_device_mode_stub.so
