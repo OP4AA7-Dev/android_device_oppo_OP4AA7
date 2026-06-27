@@ -14,6 +14,10 @@
     <string name="gestures_master_summary">Wake or trigger actions by drawing on the screen while it is off</string>
     <string name="gestures_category_title">Gestures</string>
 
+    <!-- Screen-off fingerprint -->
+    <string name="screen_off_udfps_title">Screen-off fingerprint</string>
+    <string name="screen_off_udfps_summary">Unlock with fingerprint while the screen is off</string>
+
     <!-- Gesture names -->
     <string name="gesture_double_tap">Double tap</string>
     <string name="gesture_circle">Draw \"O\"</string>

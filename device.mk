@@ -377,7 +377,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-service.multihal \
     android.hardware.sensors@2.0-ScopedWakelock.vendor \
-    libdumpstateutil.vendor
+    libdumpstateutil.vendor \
+    sensors.oplus
 
 PRODUCT_PACKAGES += \
     OPlusParts

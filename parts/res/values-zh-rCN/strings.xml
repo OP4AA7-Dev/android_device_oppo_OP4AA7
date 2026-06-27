@@ -14,6 +14,10 @@
     <string name="gestures_master_summary">在屏幕关闭时通过在屏幕上滑动或点击来唤醒设备或触发操作</string>
     <string name="gestures_category_title">手势</string>
 
+    <!-- 熄屏指纹 -->
+    <string name="screen_off_udfps_title">熄屏指纹</string>
+    <string name="screen_off_udfps_summary">在屏幕关闭时使用指纹解锁</string>
+
     <!-- 手势名称 -->
     <string name="gesture_double_tap">双击</string>
     <string name="gesture_circle">画“O”</string>

@@ -186,6 +186,29 @@
       <item>98</item>
     </integer-array>
 
+    <!-- Screen-off UDFPS trigger. The touchpanel driver reports a finger landing on
+         the UDFPS icon via /sys/kernel/oppo_display/fp_state; the sensors.oplus sub-HAL
+         surfaces this as a one-shot "org.lineageos.sensor.udfps" event. Pointing
+         DozeSensors' long-press trigger at that sensor type lets SystemUI fire UDFPS
+         authentication while the panel is off. -->
+    <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.lineageos.sensor.udfps</string>
+    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
+
+     <!-- Doze dream component launched on screen-off. Without this,
+         AmbientDisplayConfiguration.ambientDisplayComponent() returns the
+         empty default, so DreamManagerService.getDozeComponent() is null even
+         though screen_off_udfps_enabled / doze_always_on are on. On screen-off
+         PowerManagerService still drives wakefulness to DOZING, but with no
+         doze component chooseDreamForUser() returns null, the doze dream never
+         starts, the DOZE wake lock is never acquired, and getDesiredScreenPolicy-
+         Locked() falls back to policy=OFF (because mDozeAfterScreenOff is set).
+         The Sandman then drops the group to ASLEEP. Net effect: the panel goes
+         fully OFF instead of DOZE, so SystemUI's DozeTriggers never registers
+         the org.lineageos.sensor.udfps trigger sensor and screen-off UDFPS
+         events from the HAL are never consumed. Pointing this at SystemUI's
+         DozeService restores the DOZE display state and the UDFPS path. -->
+    <string name="config_dozeComponent" translatable="false">com.android.systemui/com.android.systemui.doze.DozeService</string>
+
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
          on the headphone/microphone jack. When false use the older uevent framework. -->
     <bool name="config_useDevInputEventForAudioJack">true</bool>

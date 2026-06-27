@@ -13,6 +13,12 @@
         android:summary="@string/gestures_master_summary"
         android:persistent="false" />
 
+    <SwitchPreference
+        android:key="screen_off_udfps_enabled"
+        android:title="@string/screen_off_udfps_title"
+        android:summary="@string/screen_off_udfps_summary"
+        android:persistent="false" />
+
     <PreferenceCategory android:title="@string/gestures_category_title">
 
         <ListPreference

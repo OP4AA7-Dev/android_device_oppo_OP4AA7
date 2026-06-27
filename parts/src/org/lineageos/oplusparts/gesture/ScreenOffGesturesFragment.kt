@@ -31,6 +31,7 @@ class ScreenOffGesturesFragment : PreferenceFragment() {
         addPreferencesFromResource(R.xml.screen_off_gestures)
 
         setupMasterSwitch()
+        setupScreenOffUdfpsSwitch()
         GestureType.entries.forEach(::bindGesturePreference)
     }
 
@@ -48,6 +49,20 @@ class ScreenOffGesturesFragment : PreferenceFragment() {
             Utils.writeValue(
                 Utils.PROC_DOUBLE_TAP_ENABLE,
                 if (enabled) "1" else "0"
+            )
+            true
+        }
+    }
+
+    private fun setupScreenOffUdfpsSwitch() {
+        val sw = findPreference<SwitchPreference>(SETTINGS_SCREEN_OFF_UDFPS_ENABLED)
+            ?: return
+        sw.isPersistent = false
+        sw.isChecked = isScreenOffUdfpsEnabled()
+        sw.setOnPreferenceChangeListener { _, newValue ->
+            putSecure(
+                SETTINGS_SCREEN_OFF_UDFPS_ENABLED,
+                if (newValue as Boolean) "1" else "0"
             )
             true
         }
@@ -79,6 +94,15 @@ class ScreenOffGesturesFragment : PreferenceFragment() {
         false
     }
 
+    private fun isScreenOffUdfpsEnabled(): Boolean = try {
+        Settings.Secure.getInt(
+            activity.contentResolver,
+            SETTINGS_SCREEN_OFF_UDFPS_ENABLED, 0
+        ) != 0
+    } catch (e: Exception) {
+        false
+    }
+
     private fun putSecure(key: String, value: String) {
         try {
             Settings.Secure.putString(activity.contentResolver, key, value)
@@ -90,5 +114,9 @@ class ScreenOffGesturesFragment : PreferenceFragment() {
     private fun ListPreference.entryFor(value: String): String {
         val idx = findIndexOfValue(value)
         return if (idx >= 0) entries[idx].toString() else value
+    }
+
+    companion object {
+        const val SETTINGS_SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled"
     }
 }
