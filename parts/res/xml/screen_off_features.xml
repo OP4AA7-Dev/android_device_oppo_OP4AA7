@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Master toggle: gates both gestures and screen-off fingerprint.
+         Mirrored to /proc/touchpanel/double_tap_enable and read by KeyHandler. -->
+    <SwitchPreference
+        android:key="oppo_gestures_enabled"
+        android:title="@string/screen_off_features_title"
+        android:summary="@string/gestures_master_summary"
+        android:persistent="false" />
+
+    <!-- Gestures sub-page -->
+    <Preference
+        android:key="screen_off_gestures_entry"
+        android:title="@string/screen_off_gestures_title"
+        android:summary="@string/gestures_master_summary">
+        <intent
+            android:targetPackage="org.lineageos.oplusparts"
+            android:targetClass="org.lineageos.oplusparts.gesture.ScreenOffGesturesActivity" />
+    </Preference>
+
+    <!-- Screen-off fingerprint: inline toggle (gated by the master toggle above) -->
+    <SwitchPreference
+        android:key="screen_off_udfps_enabled"
+        android:title="@string/screen_off_udfps_title"
+        android:summary="@string/screen_off_udfps_summary"
+        android:persistent="false" />
+
+</PreferenceScreen>

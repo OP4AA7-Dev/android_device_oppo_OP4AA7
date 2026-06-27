@@ -6,11 +6,15 @@
 <resources>
 
     <string name="app_name">OPPO Parts</string>
+    <string name="oppo_parts_title">OPPO features</string>
     <string name="oppo_parts_summary">OPPO original feature port</string>
-    <string name="screen_off_gestures_title">Screen-off gestures</string>
 
-    <!-- Master toggle -->
-    <string name="gestures_master_title">Screen-off gestures</string>
+    <!-- Screen-off features (grouping page) -->
+    <string name="screen_off_features_title">Screen-off features</string>
+    <string name="screen_off_features_summary">Gestures and fingerprint available while the screen is off</string>
+
+    <!-- Screen-off gestures -->
+    <string name="screen_off_gestures_title">Gestures</string>
     <string name="gestures_master_summary">Wake or trigger actions by drawing on the screen while it is off</string>
     <string name="gestures_category_title">Gestures</string>
 
@@ -42,5 +46,9 @@
     <string name="action_media_next">Next track</string>
     <string name="action_media_play_pause">Play / pause</string>
     <string name="action_ring_vib_silent">Cycle ring / vibrate / silent</string>
+
+    <!-- DC dimming -->
+    <string name="dc_dimming_title">DC dimming</string>
+    <string name="dc_dimming_summary">Reduce screen flicker at low brightness by keeping the backlight at a fixed voltage and adjusting colour calibration. May slightly affect display colour accuracy.</string>
 
 </resources>

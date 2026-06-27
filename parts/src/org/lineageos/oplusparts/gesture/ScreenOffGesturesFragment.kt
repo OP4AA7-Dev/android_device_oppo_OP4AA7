@@ -6,117 +6,89 @@
 package org.lineageos.oplusparts.gesture
 
 import android.os.Bundle
-import android.provider.Settings
 import androidx.preference.ListPreference
-import androidx.preference.PreferenceFragment
-import androidx.preference.SwitchPreference
-import org.lineageos.oplusparts.KeyHandler
+import androidx.preference.PreferenceCategory
+import androidx.preference.PreferenceFragmentCompat
 import org.lineageos.oplusparts.R
+import org.lineageos.oplusparts.gesture.action.ActionTokens
+import org.lineageos.oplusparts.settings.SecureSettings
 
 /**
- * Settings page for screen-off gestures.
+ * Settings page for screen-off gesture assignments.
  *
- * - Master switch is persisted in Settings.Secure (read by KeyHandler) and
- *   mirrored to /proc/touchpanel/double_tap_enable (the firmware arm switch).
- * - Each gesture's action is persisted in Settings.Secure under its
- *   [GestureType.secureKey]; preferences are non-persistent (managed manually)
- *   because the backing store is Settings.Secure, not SharedPreferences.
+ * The master toggle lives on the parent "screen-off features" page
+ * ([org.lineageos.oplusparts.settings.SettingsKeys.GESTURES_ENABLED]); this
+ * page only exposes the per-gesture action assignments. Each gesture's action
+ * is persisted in Settings.Secure under its [GestureType.secureKey];
+ * preferences are non-persistent (managed manually) because the backing store
+ * is Settings.Secure, not SharedPreferences.
  *
- * Uses the platform FragmentManager (PreferenceFragment in androidx-preference
- * 1.3 derives from android.app.Fragment), matching CollapsingToolbarBaseActivity.
+ * The gesture [ListPreference]s are built dynamically from [GestureType.entries]
+ * (the single source of truth for the gesture list) using the action choices
+ * from res/values/arrays.xml. The gesture list is hidden when the master
+ * toggle is off, since the assignments have no effect then.
  */
-class ScreenOffGesturesFragment : PreferenceFragment() {
+class ScreenOffGesturesFragment : PreferenceFragmentCompat() {
+
+    private lateinit var actionEntries: Array<CharSequence>
+    private lateinit var actionValues: Array<CharSequence>
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        addPreferencesFromResource(R.xml.screen_off_gestures)
+        setPreferencesFromResource(R.xml.screen_off_gestures, rootKey)
 
-        setupMasterSwitch()
-        setupScreenOffUdfpsSwitch()
-        GestureType.entries.forEach(::bindGesturePreference)
+        // getTextArray yields Array<CharSequence>, which matches ListPreference's
+        // entries/entryValues setter types (arrays are invariant in Kotlin, so a
+        // String[] from getStringArray would not assign directly).
+        actionEntries = resources.getTextArray(R.array.gesture_action_entries)
+        actionValues = resources.getTextArray(R.array.gesture_action_values)
+
+        val category = findPreference<PreferenceCategory>("gestures_category") ?: return
+        category.removeAll()
+        GestureType.entries.forEach { category.addPreference(createGesturePreference(it)) }
+
+        applyGesturesVisible(GestureManager.isEnabled(requireContext()))
     }
 
-    private fun setupMasterSwitch() {
-        val sw = findPreference<SwitchPreference>(KeyHandler.SETTINGS_GESTURES_ENABLED)
-            ?: return
-        sw.isPersistent = false
-        sw.isChecked = isMasterEnabled()
-        sw.setOnPreferenceChangeListener { _, newValue ->
-            val enabled = newValue as Boolean
-            putSecure(
-                KeyHandler.SETTINGS_GESTURES_ENABLED,
-                if (enabled) "1" else "0"
-            )
-            Utils.writeValue(
-                Utils.PROC_DOUBLE_TAP_ENABLE,
-                if (enabled) "1" else "0"
-            )
-            true
+    private fun createGesturePreference(gesture: GestureType): ListPreference {
+        val secure = SecureSettings.from(requireContext())
+        return ListPreference(requireContext()).apply {
+            key = gesture.secureKey
+            isPersistent = false
+            title = getString(gesture.titleRes)
+            entries = actionEntries
+            entryValues = actionValues
+            val value = loadGestureAction(secure, gesture)
+            this.value = value
+            summary = entryFor(value)
+            setOnPreferenceChangeListener { pref, newValue ->
+                val v = newValue as String
+                if (v in actionValues) {
+                    secure.putString(gesture.secureKey, v)
+                    pref.summary = entryFor(v)
+                }
+                true
+            }
         }
     }
 
-    private fun setupScreenOffUdfpsSwitch() {
-        val sw = findPreference<SwitchPreference>(SETTINGS_SCREEN_OFF_UDFPS_ENABLED)
-            ?: return
-        sw.isPersistent = false
-        sw.isChecked = isScreenOffUdfpsEnabled()
-        sw.setOnPreferenceChangeListener { _, newValue ->
-            putSecure(
-                SETTINGS_SCREEN_OFF_UDFPS_ENABLED,
-                if (newValue as Boolean) "1" else "0"
-            )
-            true
-        }
+    /**
+     * Read the persisted action for [gesture], falling back to its default
+     * when unset or when the stored value is no longer a supported token
+     * (stale value from an older build). The stale value is not rewritten,
+     * so no implicit data mutation happens just by opening the page.
+     */
+    private fun loadGestureAction(secure: SecureSettings, gesture: GestureType): String {
+        val stored = secure.getString(gesture.secureKey, null)
+        return if (stored != null && stored in ActionTokens.SUPPORTED) stored else gesture.defaultAction
     }
 
-    private fun bindGesturePreference(g: GestureType) {
-        val pref = findPreference<ListPreference>(g.secureKey) ?: return
-        pref.isPersistent = false
-        pref.title = getString(g.titleRes)
-        val value = Settings.Secure.getString(
-            activity.contentResolver, g.secureKey
-        ) ?: g.defaultAction
-        pref.value = value
-        pref.summary = pref.entryFor(value)
-        pref.setOnPreferenceChangeListener { p, newValue ->
-            val v = newValue as String
-            putSecure(g.secureKey, v)
-            p.summary = pref.entryFor(v)
-            true
-        }
-    }
-
-    private fun isMasterEnabled(): Boolean = try {
-        Settings.Secure.getInt(
-            activity.contentResolver,
-            KeyHandler.SETTINGS_GESTURES_ENABLED, 0
-        ) != 0
-    } catch (e: Exception) {
-        false
-    }
-
-    private fun isScreenOffUdfpsEnabled(): Boolean = try {
-        Settings.Secure.getInt(
-            activity.contentResolver,
-            SETTINGS_SCREEN_OFF_UDFPS_ENABLED, 0
-        ) != 0
-    } catch (e: Exception) {
-        false
-    }
-
-    private fun putSecure(key: String, value: String) {
-        try {
-            Settings.Secure.putString(activity.contentResolver, key, value)
-        } catch (e: Exception) {
-            // ignore
-        }
+    /** Show / hide the gesture assignment list based on the master toggle. */
+    private fun applyGesturesVisible(visible: Boolean) {
+        findPreference<PreferenceCategory>("gestures_category")?.isVisible = visible
     }
 
     private fun ListPreference.entryFor(value: String): String {
         val idx = findIndexOfValue(value)
         return if (idx >= 0) entries[idx].toString() else value
-    }
-
-    companion object {
-        const val SETTINGS_SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled"
     }
 }

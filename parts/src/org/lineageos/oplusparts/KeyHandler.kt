@@ -6,13 +6,14 @@
 package org.lineageos.oplusparts
 
 import android.content.Context
-import android.provider.Settings
 import android.util.Log
 import android.view.KeyEvent
 import com.android.internal.os.DeviceKeyHandler
-import org.lineageos.oplusparts.gesture.Action
+import org.lineageos.oplusparts.gesture.GestureManager
 import org.lineageos.oplusparts.gesture.GestureType
 import org.lineageos.oplusparts.gesture.Utils
+import org.lineageos.oplusparts.gesture.action.Action
+import org.lineageos.oplusparts.settings.SecureSettings
 
 /**
  * DeviceKeyHandler loaded by system_server (PhoneWindowManager).
@@ -25,6 +26,11 @@ import org.lineageos.oplusparts.gesture.Utils
  * On load we re-arm the firmware according to the persisted master toggle so
  * the device wakes from gestures immediately after boot, before the OPlusParts
  * app process is ever started.
+ *
+ * NOTE: this class is reflectively instantiated by system_server. Its fully
+ * qualified name, the `com.android.internal.os.DeviceKeyHandler` interface
+ * and the single-arg `Context` constructor must remain stable, and the
+ * proguard keep rule in proguard.flags must be preserved.
  */
 class KeyHandler(private val context: Context) : DeviceKeyHandler {
 
@@ -40,45 +46,29 @@ class KeyHandler(private val context: Context) : DeviceKeyHandler {
             return event
         }
 
-        val enabled = try {
-            Settings.Secure.getInt(
-                context.contentResolver, SETTINGS_GESTURES_ENABLED, 0
-            ) != 0
-        } catch (e: Exception) {
-            Log.w(TAG, "Cannot read gesture toggle", e)
-            return event
-        }
-        if (!enabled) return event
+        if (!GestureManager.isEnabled(context)) return event
 
-        val gestureType = Utils.readGestureType()
-        val gesture = GestureType.fromCode(gestureType)
-        if (gesture == null) {
+        val gestureType = GestureType.fromCode(Utils.readGestureType())
+        if (gestureType == null) {
             Log.w(TAG, "Unknown gesture_type=$gestureType, ignoring")
             return null
         }
 
-        val action = try {
-            Settings.Secure.getString(context.contentResolver, gesture.secureKey)
-        } catch (e: Exception) {
-            null
-        } ?: gesture.defaultAction
+        val action = SecureSettings.from(context)
+            .getString(gestureType.secureKey, gestureType.defaultAction)
+            ?: gestureType.defaultAction
 
         try {
             Action.processAction(context, action)
         } catch (e: Exception) {
-            Log.e(TAG, "Action '$action' failed for $gesture", e)
+            Log.e(TAG, "Action '$action' failed for $gestureType", e)
         }
         return null // consume the synthetic gesture key
     }
 
     private fun restoreArmedState() {
         try {
-            val enabled = Settings.Secure.getInt(
-                context.contentResolver, SETTINGS_GESTURES_ENABLED, 0
-            ) != 0
-            Utils.writeValue(
-                Utils.PROC_DOUBLE_TAP_ENABLE, if (enabled) "1" else "0"
-            )
+            GestureManager.restore(context)
         } catch (e: Exception) {
             // Settings provider may not be ready this early; the OPlusParts
             // boot receiver will retry. Non-fatal.
@@ -88,6 +78,5 @@ class KeyHandler(private val context: Context) : DeviceKeyHandler {
 
     companion object {
         private const val TAG = "OPlusParts.KeyHandler"
-        const val SETTINGS_GESTURES_ENABLED = "oppo_gestures_enabled"
     }
 }

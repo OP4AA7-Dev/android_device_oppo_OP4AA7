@@ -6,16 +6,20 @@
 <resources>
 
     <string name="app_name">OPPO 功能</string>
+    <string name="oppo_parts_title">OPPO 功能</string>
     <string name="oppo_parts_summary">OPPO 原厂功能移植</string>
-    <string name="screen_off_gestures_title">黑屏手势</string>
 
-    <!-- 总开关 -->
-    <string name="gestures_master_title">黑屏手势</string>
+    <!-- 息屏功能（分组页） -->
+    <string name="screen_off_features_title">息屏功能</string>
+    <string name="screen_off_features_summary">屏幕关闭时可用的手势与指纹功能</string>
+
+    <!-- 息屏手势 -->
+    <string name="screen_off_gestures_title">手势</string>
     <string name="gestures_master_summary">在屏幕关闭时通过在屏幕上滑动或点击来唤醒设备或触发操作</string>
     <string name="gestures_category_title">手势</string>
 
-    <!-- 熄屏指纹 -->
-    <string name="screen_off_udfps_title">熄屏指纹</string>
+    <!-- 息屏指纹 -->
+    <string name="screen_off_udfps_title">息屏指纹</string>
     <string name="screen_off_udfps_summary">在屏幕关闭时使用指纹解锁</string>
 
     <!-- 手势名称 -->
@@ -42,5 +46,9 @@
     <string name="action_media_next">下一首</string>
     <string name="action_media_play_pause">播放 / 暂停</string>
     <string name="action_ring_vib_silent">响铃 / 振动 / 静音 循环</string>
+
+    <!-- DC 调光 -->
+    <string name="dc_dimming_title">DC 调光</string>
+    <string name="dc_dimming_summary">低亮度下通过保持背光电压恒定并调节色彩校准来减少屏幕频闪。可能轻微影响显示色彩准确性。</string>
 
 </resources>

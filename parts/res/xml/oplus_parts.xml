@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Screen-off features sub-page (gestures + screen-off fingerprint) -->
+    <Preference
+        android:key="screen_off_features_entry"
+        android:title="@string/screen_off_features_title"
+        android:summary="@string/screen_off_features_summary">
+        <intent
+            android:targetPackage="org.lineageos.oplusparts"
+            android:targetClass="org.lineageos.oplusparts.gesture.ScreenOffFeaturesActivity" />
+    </Preference>
+
+    <!-- DC dimming: single inline toggle (no sub-page) -->
+    <SwitchPreference
+        android:key="dc_dimming_enabled"
+        android:title="@string/dc_dimming_title"
+        android:summary="@string/dc_dimming_summary"
+        android:persistent="false" />
+
+</PreferenceScreen>

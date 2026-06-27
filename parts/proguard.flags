@@ -6,5 +6,8 @@
 # Keep the SearchIndexablesProvider
 -keep class org.lineageos.oplusparts.ConfigPanelSearchIndexablesProvider { *; }
 
-# Keep gesture action classes (invoked by name)
+# Keep gesture + action classes (covers the action executor package)
 -keep class org.lineageos.oplusparts.gesture.** { *; }
+
+# Keep DC dimming classes
+-keep class org.lineageos.oplusparts.dc.** { *; }

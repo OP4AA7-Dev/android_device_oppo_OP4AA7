@@ -11,11 +11,13 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity
 class ScreenOffGesturesActivity : CollapsingToolbarBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fragmentManager.beginTransaction()
-            .replace(
-                com.android.settingslib.collapsingtoolbar.R.id.content_frame,
-                ScreenOffGesturesFragment()
-            )
-            .commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    com.android.settingslib.collapsingtoolbar.R.id.content_frame,
+                    ScreenOffGesturesFragment()
+                )
+                .commit()
+        }
     }
 }
