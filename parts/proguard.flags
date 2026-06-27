@@ -1,0 +1,10 @@
+# Keep the DeviceKeyHandler entry point (loaded by reflection from system_server)
+-keep class org.lineageos.oplusparts.KeyHandler {
+    public <init>(android.content.Context);
+}
+
+# Keep the SearchIndexablesProvider
+-keep class org.lineageos.oplusparts.ConfigPanelSearchIndexablesProvider { *; }
+
+# Keep gesture action classes (invoked by name)
+-keep class org.lineageos.oplusparts.gesture.** { *; }

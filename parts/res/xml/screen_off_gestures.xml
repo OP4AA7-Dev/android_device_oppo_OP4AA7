@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto">
+
+    <!-- Master switch: arms /proc/touchpanel/double_tap_enable and is read by KeyHandler -->
+    <SwitchPreference
+        android:key="oppo_gestures_enabled"
+        android:title="@string/gestures_master_title"
+        android:summary="@string/gestures_master_summary"
+        android:persistent="false" />
+
+    <PreferenceCategory android:title="@string/gestures_category_title">
+
+        <ListPreference
+            android:key="oppo_gesture_double_tap"
+            android:title="@string/gesture_double_tap"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**wake_device**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_circle"
+            android:title="@string/gesture_circle"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**torch**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_m"
+            android:title="@string/gesture_m"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**media_play_pause**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_w"
+            android:title="@string/gesture_w"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**media_next**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_swipe_lr"
+            android:title="@string/gesture_swipe_left_to_right"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**media_next**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_swipe_rl"
+            android:title="@string/gesture_swipe_right_to_left"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**media_previous**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_up_vee"
+            android:title="@string/gesture_up_vee"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**null**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_down_vee"
+            android:title="@string/gesture_down_vee"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**null**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_left_vee"
+            android:title="@string/gesture_left_vee"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**null**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_right_vee"
+            android:title="@string/gesture_right_vee"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**null**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_two_swipe"
+            android:title="@string/gesture_two_swipe"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**null**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_swipe_ud"
+            android:title="@string/gesture_swipe_up_to_down"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**null**"
+            android:persistent="false"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="oppo_gesture_swipe_du"
+            android:title="@string/gesture_swipe_down_to_up"
+            android:entries="@array/gesture_action_entries"
+            android:entryValues="@array/gesture_action_values"
+            android:defaultValue="**null**"
+            android:persistent="false"
+            android:summary="%s" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

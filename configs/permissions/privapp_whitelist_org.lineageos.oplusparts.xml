@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+
+     Privileged-permissions allowlist for OPlusParts. As a privileged app on
+     system_ext it must declare any signature|privileged permissions it uses
+     here, otherwise system_server refuses to boot
+     (Signature|privileged permissions not in privapp-permissions allowlist).
+
+     WRITE_SECURE_SETTINGS is signature|privileged|development and is needed
+     to persist the per-gesture action and master toggle into Settings.Secure
+     (read back by the KeyHandler running in system_server).
+     The other permissions OPlusParts requests (VIBRATE, WAKE_LOCK,
+     RECEIVE_BOOT_COMPLETED, CAMERA) are normal/dangerous/broadcast and do not
+     require an allowlist entry.
+-->
+<permissions>
+    <privapp-permissions package="org.lineageos.oplusparts">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+</permissions>

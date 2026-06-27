@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+
+    <string name="app_name">OPPO Parts</string>
+    <string name="oppo_parts_summary">OPPO original feature port</string>
+    <string name="screen_off_gestures_title">Screen-off gestures</string>
+
+    <!-- Master toggle -->
+    <string name="gestures_master_title">Screen-off gestures</string>
+    <string name="gestures_master_summary">Wake or trigger actions by drawing on the screen while it is off</string>
+    <string name="gestures_category_title">Gestures</string>
+
+    <!-- Gesture names -->
+    <string name="gesture_double_tap">Double tap</string>
+    <string name="gesture_circle">Draw \"O\"</string>
+    <string name="gesture_m">Draw \"M\"</string>
+    <string name="gesture_w">Draw \"W\"</string>
+    <string name="gesture_swipe_left_to_right">Swipe left to right</string>
+    <string name="gesture_swipe_right_to_left">Swipe right to left</string>
+    <string name="gesture_swipe_up_to_down">Swipe up to down</string>
+    <string name="gesture_swipe_down_to_up">Swipe down to up</string>
+    <string name="gesture_up_vee">Draw \"V\" (up)</string>
+    <string name="gesture_down_vee">Draw \"^\" (down)</string>
+    <string name="gesture_left_vee">Draw \"&gt;\"</string>
+    <string name="gesture_right_vee">Draw \"&lt;\"</string>
+    <string name="gesture_two_swipe">Two-finger swipe</string>
+
+    <!-- Action names -->
+    <string name="action_none">None</string>
+    <string name="action_wake_device">Wake device</string>
+    <string name="action_torch">Toggle flashlight</string>
+    <string name="action_camera">Open camera</string>
+    <string name="action_media_previous">Previous track</string>
+    <string name="action_media_next">Next track</string>
+    <string name="action_media_play_pause">Play / pause</string>
+    <string name="action_ring_vib_silent">Cycle ring / vibrate / silent</string>
+
+</resources>

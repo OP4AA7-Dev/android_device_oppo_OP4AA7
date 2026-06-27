@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sharedUserId="android.uid.system"
+    package="org.lineageos.oplusparts">
+
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_extension"
+        android:theme="@style/Theme.SubSettingsBase"
+        android:defaultToDeviceProtectedStorage="true"
+        android:directBootAware="true"
+        android:allowBackup="false">
+
+        <!-- Screen-off gestures settings entry, surfaced in system Settings -->
+        <activity
+            android:name=".gesture.ScreenOffGesturesActivity"
+            android:label="@string/screen_off_gestures_title"
+            android:icon="@drawable/ic_extension"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
+
+            <!-- TileUtils requires these meta-data or it drops the tile as
+                 "missing metadata". category.ia.homepage places the entry on
+                 the Settings top-level page. -->
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.homepage" />
+            <meta-data
+                android:name="com.android.settings.title"
+                android:resource="@string/app_name" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/oppo_parts_summary" />
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/ic_extension" />
+        </activity>
+
+        <!-- Feeds the screen-off gestures page into Settings search/index -->
+        <provider
+            android:name=".ConfigPanelSearchIndexablesProvider"
+            android:authorities="org.lineageos.oplusparts"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.READ_SEARCH_INDEXABLES"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
+            </intent-filter>
+        </provider>
+
+        <receiver
+            android:name=".gesture.GestureBootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>
