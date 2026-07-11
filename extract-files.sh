@@ -64,6 +64,10 @@ function blob_fixup() {
             "${SIGSCAN}" -p "F9 69 CA 84 52 49 3F A0 72" -P "F9 A9 00 80 52 09 00 A0 72" -f "${2}" # mov w9, #0x1fa2653 -> mov w9, #5
             "${SIGSCAN}" -p "F9 A9 C7 84 52 49 3F A0 72" -P "F9 09 01 80 52 1F 20 03 D5" -f "${2}" # mov w9, #0x1fa263d -> mov w9, #8
         ;;
+        odm/lib64/libgf_hal_G2.so | odm/lib64/libgf_hal_G3.so | \
+        odm/lib64/libgf_hal_G5.so | odm/lib64/libgf_hal_G6.so )
+            sed -i "s|odm/vendor/firmware|odm/firmware\x00\x00\x00\x00\x00\x00\x00|g" "${2}"
+        ;;
     esac
 }
 
