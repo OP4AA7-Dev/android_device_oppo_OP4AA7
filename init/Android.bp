@@ -6,70 +6,70 @@
 
 prebuilt_etc {
     name: "fstab.qcom",
-    src: "etc/fstab.qcom",
+    src: "fstab.qcom",
     vendor: true,
     ramdisk_available: true,
 }
 
 prebuilt_etc {
     name: "init.oppo.display.rc",
-    src: "etc/init.oppo.display.rc",
+    src: "init.oppo.display.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.oppo.vendor.motor.rc",
-    src: "etc/init.oppo.vendor.motor.rc",
+    src: "init.oppo.vendor.motor.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.qcom.factory.rc",
-    src: "etc/init.qcom.factory.rc",
+    src: "init.qcom.factory.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.qcom.rc",
-    src: "etc/init.qcom.rc",
+    src: "init.qcom.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.qcom.usb.rc",
-    src: "etc/init.qcom.usb.rc",
+    src: "init.qcom.usb.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.qti.ufs.rc",
-    src: "etc/init.qti.ufs.rc",
+    src: "init.qti.ufs.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.target.rc",
-    src: "etc/init.target.rc",
+    src: "init.target.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.wlan.qcom.rc",
-    src: "etc/init.wlan.qcom.rc",
+    src: "init.wlan.qcom.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.wlan.target.rc",
-    src: "etc/init.wlan.target.rc",
+    src: "init.wlan.target.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
@@ -77,84 +77,84 @@ prebuilt_etc {
 prebuilt_etc {
     name: "ueventd.qcom.rc",
     filename: "ueventd.rc",
-    src: "etc/ueventd.qcom.rc",
+    src: "ueventd.qcom.rc",
     vendor: true,
 }
 
 sh_binary {
     name: "init.crda.sh",
-    src: "bin/init.crda.sh",
+    src: "init.crda.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.mdm.sh",
-    src: "bin/init.mdm.sh",
+    src: "init.mdm.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qcom.class_core.sh",
-    src: "bin/init.qcom.class_core.sh",
+    src: "init.qcom.class_core.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qcom.coex.sh",
-    src: "bin/init.qcom.coex.sh",
+    src: "init.qcom.coex.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qcom.early_boot.sh",
-    src: "bin/init.qcom.early_boot.sh",
+    src: "init.qcom.early_boot.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qcom.efs.sync.sh",
-    src: "bin/init.qcom.efs.sync.sh",
+    src: "init.qcom.efs.sync.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qcom.post_boot.sh",
-    src: "bin/init.qcom.post_boot.sh",
+    src: "init.qcom.post_boot.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qcom.sdio.sh",
-    src: "bin/init.qcom.sdio.sh",
+    src: "init.qcom.sdio.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qcom.sh",
-    src: "bin/init.qcom.sh",
+    src: "init.qcom.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qcom.usb.sh",
-    src: "bin/init.qcom.usb.sh",
+    src: "init.qcom.usb.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qti.chg_policy.sh",
-    src: "bin/init.qti.chg_policy.sh",
+    src: "init.qti.chg_policy.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "init.qti.dcvs.sh",
-    src: "bin/init.qti.dcvs.sh",
+    src: "init.qti.dcvs.sh",
     vendor: true,
 }
 
 sh_binary {
     name: "qca6234-service.sh",
-    src: "bin/qca6234-service.sh",
+    src: "qca6234-service.sh",
     vendor: true,
 }
