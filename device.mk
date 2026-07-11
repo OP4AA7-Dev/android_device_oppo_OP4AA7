@@ -46,7 +46,6 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libaudio-resampler \
     libtinycompress \
-    libtinycompress.vendor \
     libvolumelistener \
     tinymix
 
@@ -87,7 +86,6 @@ PRODUCT_PACKAGES += \
     gralloc.sm6150
 
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-impl \
     android.hardware.graphics.composer@2.4-service \
     hwcomposer.sm6150
 
@@ -98,11 +96,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libdisplayconfig.qti \
-    libdisplayconfig.qti.vendor \
     libdisplayconfig.system.qti \
     libqdMetaData \
     libqdMetaData.system \
-    libqdMetaData.vendor \
     libtinyxml \
     libvulkan \
     vendor.qti.hardware.display.mapper@1.1.vendor \
