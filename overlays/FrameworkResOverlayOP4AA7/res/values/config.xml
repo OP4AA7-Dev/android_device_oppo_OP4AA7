@@ -181,9 +181,9 @@
        <item>sensorLocationY</item>
        <item>sensorRadius</item>
      -->
-      <item>540</item>
-      <item>2062</item>
-      <item>98</item>
+         <item>540</item>
+         <item>2062</item>
+         <item>98</item>
     </integer-array>
 
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
