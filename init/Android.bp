@@ -154,12 +154,6 @@ sh_binary {
 }
 
 sh_binary {
-    name: "init.qti.qcv.sh",
-    src: "bin/init.qti.qcv.sh",
-    vendor: true,
-}
-
-sh_binary {
     name: "qca6234-service.sh",
     src: "bin/qca6234-service.sh",
     vendor: true,

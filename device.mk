@@ -362,7 +362,6 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.qti.chg_policy.sh \
     init.qti.dcvs.sh \
-    init.qcom.qcv.sh \
     qca6234-service.sh
 
 PRODUCT_PACKAGES += \
