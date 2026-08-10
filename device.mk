@@ -381,7 +381,8 @@ PRODUCT_PACKAGES += \
     sensors.oplus
 
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.1-service.OP4AA7
+    vendor.lineage.livedisplay@2.1-service.OP4AA7 \
+    vendor.lineage.touch@1.0-service.OP4AA7
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/touchpanel.kl

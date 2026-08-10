@@ -28,4 +28,13 @@
          user switches -->
     <bool name="config_cleanupUnusedFingerprints">false</bool>
 
+    <string-array name="config_deviceKeyHandlerLibs">
+        <item>/system_ext/priv-app/LineageParts/LineageParts.apk</item>
+    </string-array>
+
+    <!-- Names of the key handler classes -->
+    <string-array name="config_deviceKeyHandlerClasses">
+        <item>org.lineageos.lineageparts.gestures.KeyHandler</item>
+    </string-array>
+
 </resources>

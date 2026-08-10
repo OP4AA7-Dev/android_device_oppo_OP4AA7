@@ -1,4 +1,6 @@
-// LiveDisplay HAL - AntiFlicker (DC dimming) service for OP4AA7
+// LiveDisplay HAL - AntiFlicker (DC dimming), DisplayModes and
+// SunlightEnhancement services for OP4AA7, backed by the oppo display sysfs
+// interface (/sys/kernel/oppo_display).
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -10,6 +12,8 @@ cc_binary {
     relative_install_path: "hw",
     srcs: [
         "AntiFlicker.cpp",
+        "DisplayModes.cpp",
+        "SunlightEnhancement.cpp",
         "service.cpp",
     ],
     shared_libs: [

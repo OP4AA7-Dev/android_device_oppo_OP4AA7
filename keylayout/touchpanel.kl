@@ -2,8 +2,28 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 # Keylayout for the "touchpanel" input device (Synaptics S3706).
-# The touchpanel driver reports double tap to wake as scancode 143
-# (KEY_WAKEUP) while suspended; mapping it to KEYCODE_WAKEUP lets the input
-# stack wake the device through PhoneWindowManager.
+#
+# Double tap to wake is reported as scancode 143 (KEY_WAKEUP); mapping it to
+# KEYCODE_WAKEUP lets the input stack wake the device through
+# PhoneWindowManager.
+#
+# Every other screen-off gesture is reported as scancode KEY_GESTURE_START +
+# gesture_type (246 + type, see touchpanel_common.h). The scancodes below are
+# mapped to keycodes that keep their numeric value so the keycode list
+# reported by vendor.lineage.touch@1.0-service.OP4AA7 (keycode 246 + type)
+# matches the incoming key events consumed by the LineageParts KeyHandler.
 
 key 143   WAKEUP
+
+key 248   TV_INPUT_COMPOSITE_2     # UpVee (V)
+key 249   TV_INPUT_COMPONENT_1     # DownVee (^)
+key 250   TV_INPUT_COMPONENT_2     # LeftVee (>)
+key 251   TV_INPUT_VGA_1           # RightVee (<)
+key 252   TV_AUDIO_DESCRIPTION     # Circle (O)
+key 253   TV_AUDIO_DESCRIPTION_MIX_UP   # DoubleSwipe (||)
+key 254   TV_AUDIO_DESCRIPTION_MIX_DOWN # LeftToRight (-->)
+key 255   TV_ZOOM_MODE             # RightToLeft (<--)
+key 256   TV_CONTENTS_MENU         # UpToDown (|v)
+key 257   TV_MEDIA_CONTEXT_MENU    # DownToUp (|^)
+key 258   TV_TIMER_PROGRAMMING     # M
+key 259   HELP                     # W

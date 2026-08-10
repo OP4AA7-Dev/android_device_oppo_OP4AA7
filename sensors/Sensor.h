@@ -166,7 +166,7 @@ class SysfsPollingOneShotSensor : public OneShotSensor {
 /*
  * Double-tap-to-wake. While dozing, the framework arms this sensor through
  * DozeSensors (config_dozeDoubleTapSensorType); activating it writes 1 to
- * /sys/touchpanel/double_tap_enable so the touch firmware keeps double-tap
+ * /proc/touchpanel/double_tap_enable so the touch firmware keeps double-tap
  * detection armed in suspend. A detected double tap flips
  * /sys/touchpanel/double_tap_state and sysfs_notify wakes this sensor, which
  * then emits a one-shot wake-up event so DozeTriggers wakes the device.
@@ -176,7 +176,7 @@ class DoubleTapSensor : public SysfsPollingOneShotSensor {
     DoubleTapSensor(int32_t sensorHandle, ISensorsEventCallback* callback)
         : SysfsPollingOneShotSensor(
                   sensorHandle, callback, "/sys/touchpanel/double_tap_state",
-                  "/sys/touchpanel/double_tap_enable", "Double Tap Sensor",
+                  "/proc/touchpanel/double_tap_enable", "Double Tap Sensor",
                   "org.lineageos.sensor.double_tap",
                   static_cast<SensorType>(static_cast<int32_t>(SensorType::DEVICE_PRIVATE_BASE) +
                                           2)) {}
