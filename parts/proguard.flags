@@ -1,5 +1,0 @@
-# Keep the SearchIndexablesProvider
--keep class org.lineageos.oplusparts.ConfigPanelSearchIndexablesProvider { *; }
-
-# Keep DC dimming classes
--keep class org.lineageos.oplusparts.dc.** { *; }

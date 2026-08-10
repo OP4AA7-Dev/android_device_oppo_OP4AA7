@@ -381,13 +381,10 @@ PRODUCT_PACKAGES += \
     sensors.oplus
 
 PRODUCT_PACKAGES += \
-    OPlusParts
+    vendor.lineage.livedisplay@2.1-service.OP4AA7
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/touchpanel.kl
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp_whitelist_org.lineageos.oplusparts.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp_whitelist_org.lineageos.oplusparts.xml
 
 PRODUCT_PACKAGES += \
     libsensorndkbridge
