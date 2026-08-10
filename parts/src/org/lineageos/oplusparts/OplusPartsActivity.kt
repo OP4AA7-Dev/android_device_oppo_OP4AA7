@@ -10,7 +10,7 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity
 
 /**
  * Top-level "OPPO features" landing page surfaced in system Settings.
- * Lists the available feature sub-pages (screen-off features, DC dimming).
+ * Lists the available feature sub-pages (DC dimming).
  */
 class OplusPartsActivity : CollapsingToolbarBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

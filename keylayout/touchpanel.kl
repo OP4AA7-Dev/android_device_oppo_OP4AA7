@@ -2,12 +2,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 # Keylayout for the "touchpanel" input device (Synaptics S3706).
-# The firmware reports every screen-off gesture as scancode 62 (KEY_F4);
-# mapping it to KEYCODE_F4 lets it enter the KeyEvent dispatch path so the
-# OPPOPart DeviceKeyHandler can intercept it and read the concrete gesture
-# from /proc/touchpanel/coordinate.
-#
-# Touchpanel only emits this key while suspended (screen off), so mapping it
-# to F4 has no effect during normal on-screen use.
+# The touchpanel driver reports double tap to wake as scancode 143
+# (KEY_WAKEUP) while suspended; mapping it to KEYCODE_WAKEUP lets the input
+# stack wake the device through PhoneWindowManager.
 
-key 62   F4
+key 143   WAKEUP

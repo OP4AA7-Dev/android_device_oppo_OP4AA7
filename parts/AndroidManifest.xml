@@ -22,7 +22,7 @@
         android:allowBackup="false">
 
         <!-- Top-level "OPPO features" entry, surfaced on the Settings homepage.
-             Lists the feature sub-pages (screen-off gestures, DC dimming). -->
+             Lists the feature sub-pages (DC dimming). -->
         <activity
             android:name=".OplusPartsActivity"
             android:label="@string/oppo_parts_title"
@@ -48,20 +48,6 @@
                 android:name="com.android.settings.icon"
                 android:resource="@drawable/ic_extension" />
         </activity>
-
-        <!-- Screen-off features sub-page (master toggle, gestures entry, UDFPS) -->
-        <activity
-            android:name=".gesture.ScreenOffFeaturesActivity"
-            android:label="@string/screen_off_features_title"
-            android:icon="@drawable/ic_extension"
-            android:exported="true" />
-
-        <!-- Screen-off gestures sub-page (launched from ScreenOffFeaturesActivity) -->
-        <activity
-            android:name=".gesture.ScreenOffGesturesActivity"
-            android:label="@string/screen_off_gestures_title"
-            android:icon="@drawable/ic_extension"
-            android:exported="true" />
 
         <!-- Feeds the feature pages into Settings search/index -->
         <provider

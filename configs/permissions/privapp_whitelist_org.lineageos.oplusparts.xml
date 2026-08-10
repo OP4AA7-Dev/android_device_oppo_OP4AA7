@@ -9,8 +9,7 @@
      (Signature|privileged permissions not in privapp-permissions allowlist).
 
      WRITE_SECURE_SETTINGS is signature|privileged|development and is needed
-     to persist the per-gesture action and master toggle into Settings.Secure
-     (read back by the KeyHandler running in system_server).
+     to persist the DC dimming toggle into Settings.Secure.
      The other permissions OPlusParts requests (VIBRATE, WAKE_LOCK,
      RECEIVE_BOOT_COMPLETED, CAMERA) are normal/dangerous/broadcast and do not
      require an allowlist entry.

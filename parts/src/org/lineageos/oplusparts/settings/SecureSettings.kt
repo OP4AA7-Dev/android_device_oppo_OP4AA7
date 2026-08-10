@@ -12,8 +12,8 @@ import android.util.Log
 
 /**
  * Thin wrapper around [Settings.Secure] that absorbs the repeated try/catch
- * and default-value handling scattered across KeyHandler, the preference
- * fragments and the boot receiver.
+ * and default-value handling scattered across the preference fragments and
+ * the boot receiver.
  *
  * Reads never throw: on any failure the supplied default is returned and a
  * warning is logged (important during Direct Boot / early system_server load

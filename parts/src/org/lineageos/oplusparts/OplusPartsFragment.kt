@@ -14,7 +14,6 @@ import org.lineageos.oplusparts.settings.SettingsKeys
 /**
  * Top-level "OPPO features" landing page.
  *
- * - Screen-off features: launches its own sub-page via an `<intent>`.
  * - DC dimming: an inline master toggle (no sub-page) that writes the
  *   `dimlayer_bl_en` sysfs node via [DCDimmingManager] and persists its state
  *   in Settings.Secure. Re-applied at boot by [org.lineageos.oplusparts.BootReceiver].

@@ -194,6 +194,15 @@
     <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.lineageos.sensor.udfps</string>
     <bool name="config_dozeAfterScreenOffByDefault">true</bool>
 
+    <!-- Double tap to wake. The touchpanel driver only arms double-tap detection
+         in suspend (all other black-screen gestures are removed); the
+         sensors.oplus sub-HAL surfaces it as a one-shot
+         "org.lineageos.sensor.double_tap" wake-up event. Pointing DozeSensors'
+         double-tap trigger at that sensor type lets SystemUI wake the device
+         (and Settings -> System -> Gestures -> "Double tap to check phone"
+         toggle the DOZE_DOUBLE_TAP_GESTURE setting, default on). -->
+    <string name="config_dozeDoubleTapSensorType" translatable="false">org.lineageos.sensor.double_tap</string>
+
      <!-- Doze dream component launched on screen-off. Without this,
          AmbientDisplayConfiguration.ambientDisplayComponent() returns the
          empty default, so DreamManagerService.getDozeComponent() is null even

@@ -3,9 +3,10 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 //
-// Screen-off UDFPS trigger sub-HAL. Polls the touchpanel-reported fp_state node
-// and emits a one-shot org.lineageos.sensor.udfps event so the framework
-// UdfpsController can fire onFingerDown while the panel is off.
+// Screen-off UDFPS trigger and double-tap-to-wake sub-HAL. Polls the
+// touchpanel-reported fp_state / double_tap_state nodes and emits one-shot
+// org.lineageos.sensor.udfps / org.lineageos.sensor.double_tap events so the
+// framework can wake on UDFPS touches and double taps while the panel is off.
 
 cc_library_shared {
     name: "sensors.oplus",

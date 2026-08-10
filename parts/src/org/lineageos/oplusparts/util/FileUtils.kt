@@ -13,9 +13,9 @@ import java.io.FileReader
 import java.io.IOException
 
 /**
- * Shared sysfs/proc helpers used by every feature module (gestures, DC
- * dimming, ...).  Keeps a single implementation of the read/write primitives
- * instead of one copy per package.
+ * Shared sysfs/proc helpers used by every feature module (DC dimming, ...).
+ * Keeps a single implementation of the read/write primitives instead of one
+ * copy per package.
  */
 object FileUtils {
     private const val TAG = "OPlusParts.FileUtils"
