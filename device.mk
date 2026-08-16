@@ -373,6 +373,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.qti.ufs.rc \
+    init.recovery.qcom.rc \
     init.target.rc \
     init.wlan.qcom.rc \
     init.wlan.target.rc \
