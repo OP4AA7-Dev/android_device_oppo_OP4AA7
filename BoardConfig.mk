@@ -8,7 +8,6 @@
 include vendor/oppo/OP4AA7/BoardConfigVendor.mk
 
 DEVICE_PATH := device/oppo/OP4AA7
-KERNEL_PATH := $(DEVICE_PATH)-kernel
 
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
@@ -90,15 +89,13 @@ TARGET_KERNEL_CLANG_COMPILE := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_KERNEL_IMAGE_NAME := Image.gz
-BOARD_KERNEL_SEPARATED_DTBO := true
-TARGET_KERNEL_CONFIG := sm8150_defconfig
-
-# Kernel - prebuilt
-TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
-BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtbs
-TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/Image.gz
-TARGET_FORCE_PREBUILT_KERNEL := true
+BOARD_RAMDISK_USE_LZ4 := true
+TARGET_KERNEL_CONFIG := \
+    vendor/sdmsteppe-auto-perf_defconfig \
+    vendor/debugfs.config \
+    vendor/oplus/sm7150-common.config \
+    vendor/oplus/$(PRODUCT_DEVICE).config
+TARGET_KERNEL_SOURCE := kernel/oppo/sm7150
 
 # FM
 BOARD_HAS_QCA_FM_SOC := "cherokee"
@@ -152,7 +149,6 @@ TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD := true
 
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
-BOARD_PREBUILT_RECOVERY_DTBO := $(KERNEL_PATH)/recovery_dtbo.img
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
