@@ -1123,7 +1123,6 @@ vendor/lib64/libswvdec.so
 
 # Oplus HIDL hals
 odm/bin/hw/vendor.oplus.hardware.biometrics.fingerprint@2.1-service
-odm/etc/init/vendor.oplus.hardware.biometrics.fingerprint@2.1-service.rc
 odm/lib64/vendor.oplus.hardware.biometrics.fingerprintservice@1.0.so
 odm/lib64/vendor.oplus.hardware.commondcs@1.0.so
 

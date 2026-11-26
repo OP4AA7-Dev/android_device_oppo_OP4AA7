@@ -12,6 +12,9 @@ on post-fs-data
     chown system system /sys/kernel/oppo_display/hbm
 
 on boot
+    # Goodix FP
+    chown system system /dev/goodix_fp
+
     chmod 0660 /sys/kernel/oppo_display/notify_fppress
     chmod 0660 /sys/kernel/oppo_display/dimlayer_hbm
     chmod 0660 /sys/kernel/oppo_display/notify_panel_blank
