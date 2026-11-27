@@ -1330,8 +1330,8 @@ vendor/radio/qcril_database/upgrade/6_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/7_version_update_ecc_table.sql
 vendor/radio/qcril_database/qcril.db
 
-# IMS - from LA.QSSI.11.0.r1-11000-qssi.0
--system_ext/priv-app/ims/ims.apk|7c243d450cc215be2b0187d5e3e6cd01059b8cc1
+# IMS - from sake - 31.1010.0410.43
+-system_ext/priv-app/ims/ims.apk|1ad396eb63e145a636309de191cd267251b6ce6a
 
 # Radio - IMS
 odm/lib64/vendor.oplus.hardware.ims@1.0.so
