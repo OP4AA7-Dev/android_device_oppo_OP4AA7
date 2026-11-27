@@ -12,8 +12,7 @@
 ## <author>            <data>        <version >       <desc>
 ## sachin.shukla   2020/10/19         1.0        create file
 ################################################################
-#ifdef OPLUS_ARCH_EXTENDS
-#sachin.shukla@MULTIMEDIA.DISPLAY.LCD.PARAMS,2020-10-19 add for display
+
 on boot
     chown system system /sys/kernel/oppo_display/dump_info
     chown system system /sys/kernel/oppo_display/hbm
@@ -61,5 +60,3 @@ on boot
     chmod 0666 /sys/kernel/oppo_display/mipi_clk_rate_hz
     chmod 0666 /sys/kernel/oppo_display/osc_clock
     chmod 0666 /sys/kernel/oppo_display/max_brightness
-#endif /* OPLUS_ARCH_EXTENDS */
-

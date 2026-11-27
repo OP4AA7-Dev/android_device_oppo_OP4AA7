@@ -350,33 +350,19 @@ PRODUCT_PACKAGES += \
     fstab.qcom_ramdisk
 
 PRODUCT_PACKAGES += \
-    init.class_main.sh \
-    init.crda.sh \
-    init.mdm.sh \
     init.qcom.class_core.sh \
-    init.qcom.coex.sh \
     init.qcom.early_boot.sh \
-    init.qcom.efs.sync.sh \
     init.qcom.post_boot.sh \
-    init.qcom.sdio.sh \
     init.qcom.sh \
-    init.qcom.usb.sh \
-    init.qti.chg_policy.sh \
-    init.qti.dcvs.sh \
-    init.qcom.qcv.sh \
-    qca6234-service.sh
+    init.qcom.usb.sh
 
 PRODUCT_PACKAGES += \
     init.oppo.display.rc \
-    init.oppo.vendor.motor.rc \
     init.qcom.factory.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
-    init.qti.ufs.rc \
     init.recovery.qcom.rc \
     init.target.rc \
-    init.wlan.qcom.rc \
-    init.wlan.target.rc \
     ueventd.qcom.rc
 
 # Secure element

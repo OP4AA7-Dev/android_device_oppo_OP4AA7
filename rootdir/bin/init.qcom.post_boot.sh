@@ -593,8 +593,6 @@ function configure_zram_parameters() {
     fi
 }
 
-#ifdef VENDOR_EDIT
-#/*Huacai.Zhou@Tech.Kernel.MM, add oppo zram opt*/
 function oppo_configure_zram_parameters() {
     MemTotalStr=`cat /proc/meminfo | grep MemTotal`
     MemTotal=${MemTotalStr:16:8}
@@ -621,7 +619,6 @@ function oppo_configure_zram_parameters() {
             echo 1342177280 > /sys/block/zram0/disksize
 	    echo 2 > /sys/module/lowmemorykiller/parameters/almk_totalram_ratio
         elif [ $MemTotal -le 3145728 ]; then
-            #ifdef VENDOR_EDIT
             #config 1.9GB zramsize with ramsize 3GB
             echo 2040109466 > /sys/block/zram0/disksize
 	    echo 3 > /sys/module/lowmemorykiller/parameters/almk_totalram_ratio
@@ -650,7 +647,7 @@ function oppo_configure_zram_parameters() {
         swapon /dev/block/zram0 -p 32758
     fi
 }
-#endif /*VENDOR_EDIT*/
+
 function configure_read_ahead_kb_values() {
     MemTotalStr=`cat /proc/meminfo | grep MemTotal`
     MemTotal=${MemTotalStr:16:8}
@@ -729,18 +726,9 @@ low_ram=`getprop ro.config.low_ram`
 
 if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] || [ "$ProductName" == "sdmshrike_au" ]; then
       # Enable ZRAM
-#ifdef VENDOR_EDIT
-#/*Huacai.Zhou@Tech.Kernel.MM, add oppo zram opt*/
-       oppo_configure_zram_parameters
-#else
-#      configure_zram_parameters
-#endif /*VENDOR_EDIT*/
+      oppo_configure_zram_parameters
       configure_read_ahead_kb_values
       echo 0 > /proc/sys/vm/page-cluster
-#ifndef VENDOR_EDIT
-#/*Huacai.Zhou@Tech.Kernel.MM, add oppo zram opt*/
-#      echo 100 > /proc/sys/vm/swappiness
-#endif /*VENDOR_EDIT*/
 else
     arch_type=`uname -m`
     MemTotalStr=`cat /proc/meminfo | grep MemTotal`
@@ -852,13 +840,8 @@ else
     # Disable wsf for all targets beacause we are using efk.
     # wsf Range : 1..1000 So set to bare minimum value 1.
     echo 1 > /proc/sys/vm/watermark_scale_factor
-#ifdef VENDOR_EDIT
-#/*Huacai.Zhou@Tech.Kernel.MM, add oppo zram opt*/
-	oppo_configure_zram_parameters
-#else
-    #configure_zram_parameters
-#endif /*VENDOR_EDIT*/
 
+	oppo_configure_zram_parameters
     configure_read_ahead_kb_values
 
     enable_swap
@@ -4878,11 +4861,7 @@ case "$target" in
 	echo 95 95 > /proc/sys/kernel/sched_upmigrate
 	echo 85 85 > /proc/sys/kernel/sched_downmigrate
 	echo 100 > /proc/sys/kernel/sched_group_upmigrate
-#ifdef VENDOR_EDIT //SunFaliang@BSP.Power.Basic,Standardize the submission of Hypnus.
 	echo 95 > /proc/sys/kernel/sched_group_downmigrate
-#else
-#	echo 10 > /proc/sys/kernel/sched_group_downmigrate
-#endif
 	echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 
 	# cpuset parameters
