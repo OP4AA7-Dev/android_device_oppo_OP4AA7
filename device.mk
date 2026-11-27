@@ -260,7 +260,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayOP4AA7 \
     FrameworkResOverlayOP4AA7 \
-    LineageSdkResOP4AA7 \
+    LineageSdkResOverlayOP4AA7 \
     SystemUIOverlayOP4AA7 \
     TelephonyResOverlayOP4AA7
 
